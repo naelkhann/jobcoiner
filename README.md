@@ -17,7 +17,7 @@ To develop on the project you have the following available scripts: `start`, `bu
 For the purposes of a demo, you won't need most of the scripts. We suggest running:
 
 ```
-$ yarn start
+$ yarn && yarn start
 ```
 
 This will spin up the development server at `localhost:3000` and allow you to see the app live! Poke around the frontend and try to break it!
