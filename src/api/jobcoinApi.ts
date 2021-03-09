@@ -1,22 +1,18 @@
 import axios, { AxiosInstance } from "axios";
 
-interface SendJobcoinParams {
-  fromAddress: string;
-  toAddress: string;
-  amount: string;
-}
-
 export interface AddressData {
   balance: string;
   transactions: Transaction[];
 }
 
-interface Transaction {
+export interface Transaction {
   timestamp: string;
   fromAddress?: string;
   toAddress: string;
   amount: string;
 }
+
+export type TransactionParams = Omit<Transaction, "timestamp">;
 
 const api: AxiosInstance = axios.create({
   baseURL: "https://jobcoin.gemini.com/celery-attire/api/",
@@ -28,6 +24,5 @@ export const getAddressInfo = (address: string) =>
 
 export const getAllTransactions = () => api.get("transactions");
 
-export const sendJobcoin = (params: SendJobcoinParams) => {
+export const sendJobcoin = (params: TransactionParams) =>
   api.post("transactions", params);
-};

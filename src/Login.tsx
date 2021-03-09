@@ -13,6 +13,7 @@ import {
 import { ReactComponent as Logo } from "./images/jobcoin-logo.svg";
 
 function Login(props: RouteComponentProps) {
+  // State Hooks
   const [address, setAddress] = React.useState<string>("");
 
   const handleAddressChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,9 +21,10 @@ function Login(props: RouteComponentProps) {
     setAddress(addressVal);
   };
 
+  // Login form submission routes to '/home'
   const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
-    props.navigate && props.navigate(`/home/${address}`);
+    if (props.navigate) props.navigate(`/home/${address}`);
   };
 
   return (
